@@ -1,0 +1,62 @@
+.novo-ag-topo {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.horarios-header>h3{
+    padding-top: 1rem;
+    background: rgba(70, 131, 180, 0.219);
+    height: 4.3rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.calendar {
+    width: 48%;
+    height: 60vh;
+}
+
+.horarios{
+    width: 48%;
+    height: 60vh;
+    /*background-color: rgba(0, 0, 0, 0.068);*/
+    border-radius: 8px;
+}
+.horarios-corpo{
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+
+}
+.btn-horarios{
+    width: 32%;
+    height: 3.2rem;
+    margin-bottom: 0.50rem;
+}
+
+.fc-day-today {
+    background: #019696 !important;
+    border: none !important;
+
+}
+.fc-highlight{
+    background: rgba(70, 131, 180, 0.219) !important;
+}
+
+.fc-header-toolbar{
+    background: rgba(70, 131, 180, 0.219);
+    /*border-radius: 8px;*/
+}
+
+.hidden{
+	display:none;
+}
+
+.visible {
+	display:block;
+}
+
+.fc-toolbar-title{
+    text-transform: uppercase;
+}
