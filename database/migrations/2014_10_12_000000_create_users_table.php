@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('id_lotacao')->nullable();
             $table->enum('status',['pre_cadastrado','ativo','inativo']);
-            $table->enum('perfil',['usuario','administrador']);
+            $table->enum('perfil',['usuario','coordenador','administrador']);
             $table->rememberToken();
             $table->timestamps();
         });

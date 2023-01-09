@@ -15,7 +15,7 @@
             </a>
 
             <div class="dropdown-menu bg-info">
-                <a class="dropdown-item bg-info" href="/novo_agendamento">Cadastro</a>
+                <a class="dropdown-item bg-info" href="/novo_agendamento_cad">Cadastro</a>
                 <a class="dropdown-item bg-info" href="#">Atendimento Técnico</a>
 
             </div>

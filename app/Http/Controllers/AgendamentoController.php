@@ -36,9 +36,9 @@ class AgendamentoController extends Controller
     }
 
 
-    public function cadastrar_novo()
+    public function cadastrar_novo_cad()
     {
-        return view('agenda.novo_agendamento');
+        return view('agenda.novo_agendamento_cad');
     }
 
 
@@ -86,7 +86,7 @@ class AgendamentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store_cad(Request $request)
     {
 
         $agendamento = Agendamento::where('data', $request->data)->where('horario', $request->horario)->where('unidade', $request->id_unidade)->get();
@@ -104,10 +104,10 @@ class AgendamentoController extends Controller
                 'horario' => $request->horario,
             ]);
 
-            return redirect()->route('agenda-novo_agendamento')->with('success', 'Agendamento realizado com sucesso!');
+            return redirect()->route('agenda-novo_agendamento_cad')->with('success', 'Agendamento realizado com sucesso!');
         }
         else{
-            return redirect()->route('agenda-novo_agendamento')->with('error', 'Parece que ocorreu um erro nos dados ou o dia não está mais disponível.');
+            return redirect()->route('agenda-novo_agendamento_cad')->with('error', 'Parece que ocorreu um erro nos dados ou o dia não está mais disponível.');
         }
 
     }
@@ -119,7 +119,7 @@ class AgendamentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function salvar_atendimento(Request $request)
+    public function salvar_atendimento_cad(Request $request)
     {
 
         $agendamento = Agendamento::where('data', $request->data)->where('horario', $request->horario)->where('unidade', $request->id_unidade)->get();
@@ -137,10 +137,10 @@ class AgendamentoController extends Controller
                 'horario' => $request->horario,
             ]);
 
-            return redirect()->route('agenda-novo_agendamento')->with('success', 'Agendamento realizado com sucesso!');
+            return redirect()->route('agenda-novo_agendamento_cad')->with('success', 'Agendamento realizado com sucesso!');
         }
         else{
-            return redirect()->route('agenda-novo_agendamento')->with('error', 'Parece que ocorreu um erro nos dados ou o dia não está mais disponível.');
+            return redirect()->route('agenda-novo_agendamento_cad')->with('error', 'Parece que ocorreu um erro nos dados ou o dia não está mais disponível.');
         }
 
     }

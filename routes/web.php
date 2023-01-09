@@ -41,13 +41,13 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 /* Route::get('/requerimento', [App\Http\Controllers\SetorPessoalController::class, 'requerimento'])->name('forms-requerimento'); */
 
-Route::post('/', [\App\Http\Controllers\AgendamentoController::class, 'store'])->name('agendamento-store');
+Route::post('/', [\App\Http\Controllers\AgendamentoController::class, 'store_cad'])->name('agendamento-store');
 
 Route::post('/chamaNovo', [\App\Http\Controllers\AgendamentoController::class, 'chamarNovo'])->name('agendamento-chamarNovo');
 
-Route::get('/novo_agendamento', [App\Http\Controllers\AgendamentoController::class, 'cadastrar_novo'])->name('agenda-novo_agendamento');
+Route::get('/novo_agendamento_cad', [App\Http\Controllers\AgendamentoController::class, 'cadastrar_novo_cad'])->name('agenda-novo_agendamento_cad');
 
-Route::post('/salvar_atendimento', [App\Http\Controllers\AgendamentoController::class, 'salvar_atendimento'])->name('agenda-salvar_atendimento');
+Route::post('/salvar_atendimento_cad', [App\Http\Controllers\AgendamentoController::class, 'salvar_atendimento_cad'])->name('agenda-salvar_atendimento_cad');
 
 Route::get('/lista_agendados', [App\Http\Controllers\AgendamentoController::class, 'index'])->name('agenda-lista_agendados');
 

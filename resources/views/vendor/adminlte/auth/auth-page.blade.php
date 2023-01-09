@@ -22,8 +22,8 @@
         {{-- Logo --}}
         <div class="{{ $auth_type ?? 'login' }}-logo">
             <img src="{{ asset(config('adminlte.logo_login_img')) }}" height="220">
-
-            <h4>Sistema de Gestão de Atendimento SGA-SDHDS</h4>
+            <img src="{{ asset(config('adminlte.logo_agenda')) }}" height="60">
+            <!-- <h4>Sistema de Gestão de Atendimento SGA-SDHDS</h4> -->
 
         </div>
 
