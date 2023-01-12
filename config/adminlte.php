@@ -45,16 +45,20 @@ return [
     |
     */
 
-    
+
     'logo_img2' => 'vendor/adminlte/dist/img/brasao.png',
-    'logo_img' => 'vendor/adminlte/dist/img/brasao.png',
+    'logo_img' => 'vendor/adminlte/dist/img/logo-ball-agendacras.png',
+    'banner' => 'vendor/adminlte/dist/img/banners/banner.png',
+    'banner2' => 'vendor/adminlte/dist/img/banners/banner2.jpg',
+    'banner3' => 'vendor/adminlte/dist/img/banners/banner3.jpg',
+    'banner4' => 'vendor/adminlte/dist/img/banners/banner4.jpg',
     'logo_img_class' => 'brand-image elevation-0',
     'logo_login_img' => 'vendor/adminlte/dist/img/logo-sdhds-white.png',
     'logo_login_img_black' => 'vendor/adminlte/dist/img/logo-sdhds-black.png',
     'logo_sdhds_horizontal' => 'vendor/adminlte/dist/img/logo-sdhds-horizontal.png',
     'logo_horizontal' => 'vendor/adminlte/dist/img/logo-horizontal.png',
-    'logo_agenda' => 'vendor/adminlte/dist/img/logo-agenda-white.png',
-    'logo_img_xl' => 'vendor/adminlte/dist/img/logo-agenda-white.png',
+    'logo_agenda' => 'vendor/adminlte/dist/img/logo-agendacras-white.png',
+    'logo_img_xl' => 'vendor/adminlte/dist/img/logo-agendacras-white.png',
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'Agenda CRAS',
 
@@ -232,11 +236,11 @@ return [
 
     'menu' => [
         // Navbar items:
-        [
+/*         [
             'type'         => 'navbar-search',
-            'text'         => 'search',
+            'text'         => 'pesquisar',
             'topnav_right' => true,
-        ],
+        ], */
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
@@ -266,6 +270,24 @@ return [
             'icon'        => 'fa fa-home',
             //'label'       => 4,
             //'label_color' => 'success',
+        ],
+        [
+            'text'    => 'Dashboard',
+            'icon'    => 'fas fa-fw fa-chart-line',
+            //'url'  => 'dash_geral',
+
+            'submenu' => [
+                [
+                    'text' => 'Almoços',
+                    'icon' => 'fas fa-fw fa-utensils',
+                    'url'  => '/1/dash_geral',
+                ],
+                [
+                    'text' => 'Sopas',
+                    'icon'    => 'fas fa-mug-hot',
+                    'url'  => '/2/dash_geral',
+                ],
+            ],
         ],
         ['header' => 'account_settings'],
         [

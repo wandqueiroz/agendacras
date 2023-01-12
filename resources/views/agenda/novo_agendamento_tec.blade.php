@@ -3,7 +3,7 @@
 @section('title', 'Agendamento')
 
 @section('content_header')
-    <h1>Novo agendamento - Cadastro</h1>
+    <h1>Novo agendamento - Atendimento Técnico</h1>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 @stop
 
@@ -154,7 +154,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script src="{{ asset('js/FullCalendar/main.min.js') }}"></script>
-    <script src="{{ asset('js/calendarJavascript.js') }}"></script>
+    <script src="{{ asset('js/calendarJavascriptTec.js') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="sweetalert2.min.js"></script>
 

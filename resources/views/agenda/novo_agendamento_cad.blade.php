@@ -104,8 +104,8 @@
                                         aria-describedby="idUnidadeHelp" name="id_unidade" hidden>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="inputTipoNovoAg" class="form-label">Tipo do Atendimento</label>
-                                    <select class="custom-select" name="tipo_atendimento" required>
+                                    <label for="inputTipoNovoAg" class="form-label">Ação</label>
+                                    <select class="custom-select" name="acao" required>
                                         <option selected>Selecione</option>
                                         <option value="1">NOVO CADASTRO UNICO</option>
                                         <option value="2">ATUALIZAÇÃO CADASTRAL</option>
@@ -154,7 +154,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script src="{{ asset('js/FullCalendar/main.min.js') }}"></script>
-    <script src="{{ asset('js/calendarJavascript.js') }}"></script>
+    <script src="{{ asset('js/calendarJavascriptCad.js') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="sweetalert2.min.js"></script>
 
@@ -214,6 +214,22 @@
                 $(".horarios-corpo").empty();
 
             });
+
+            var corpo = $("<button type='button' id='08-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>08:00</button><button type='button' id='08-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>08:20</button>" +
+                "<button type='button' id='08-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>08:40</button><button type='button' id='09-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>09:00</button>" +
+                "<button type='button' id='09-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>09:20</button><button type='button' id='09-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>09:40</button>" +
+                "<button type='button' id='10-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>10:00</button><button type='button' id='10-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>10:20</button>" +
+                "<button type='button' id='10-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>10:40</button><button type='button' id='11-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>11:00</button>" +
+                "<button type='button' id='11-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>11:20</button><button type='button' id='11-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>11:40</button>" +
+                "<button type='button' id='13-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>13:00</button><button type='button' id='13-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>13:20</button>" +
+                "<button type='button' id='13-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>13:40</button><button type='button' id='14-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>14:00</button>" +
+                "<button type='button' id='14-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>14:20</button><button type='button' id='14-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>14:40</button>" +
+                "<button type='button' id='15-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>15:00</button><button type='button' id='15-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>15:20</button>" +
+                "<button type='button' id='15-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>15:40</button><button type='button' id='16-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>16:00</button>" +
+                "<button type='button' id='16-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>16:20</button><button type='button' id='16-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>16:40</button>");
+
+            $(".horarios-corpo").append(corpo);
+
 
         });
 

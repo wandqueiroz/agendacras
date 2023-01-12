@@ -8,7 +8,7 @@ use App\Models\Bairro_unidade;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-class AgendamentoController extends Controller
+class AgendamentoTecController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,14 +31,14 @@ class AgendamentoController extends Controller
         $user = Auth::user();
         //print_r($user['id_lotacao']);
         //$agendados = Agendamento::all();
-        $agendados = Agendamento::where('data', $now/* date('Y-m-d' )*/)->where('unidade', $user['id_lotacao'])->where('tipo_atendimento', '1')->get();
+        $agendados = Agendamento::where('data', $now/* date('Y-m-d' )*/)->where('unidade', $user['id_lotacao'])->get();
         return view('agenda.lista_agendados', ['agendados' => $agendados]);
     }
 
 
     public function cadastrar_novo()
     {
-        return view('agenda.novo_agendamento_cad');
+        return view('agenda.novo_agendamento_tec');
     }
 
 
@@ -62,7 +62,7 @@ class AgendamentoController extends Controller
     {
         $dia = $request->get('dia');
         $id_unidade = $request->get('id_unidade');
-        $users = Agendamento::where('data', $dia)->where('unidade', $id_unidade)->get();
+        $users = Agendamento::where('data', $dia)->where('unidade', $id_unidade)->where('tipo_atendimento', '2')->get();
 
         //$horarios = array('08:00', '08:40', '09:00', '15:40', '16:00', '11:20', '13:40', '14:20');
 
@@ -104,10 +104,10 @@ class AgendamentoController extends Controller
                 'horario' => $request->horario,
             ]);
 
-            return redirect()->route('agenda-novo_agendamento_cad')->with('success', 'Agendamento realizado com sucesso!');
+            return redirect()->route('agenda-novo_agendamento_tec')->with('success', 'Agendamento realizado com sucesso!');
         }
         else{
-            return redirect()->route('agenda-novo_agendamento_cad')->with('error', 'Parece que ocorreu um erro nos dados ou o dia não está mais disponível.');
+            return redirect()->route('agenda-novo_agendamento_tec')->with('error', 'Parece que ocorreu um erro nos dados ou o dia não está mais disponível.');
         }
 
     }
@@ -132,16 +132,15 @@ class AgendamentoController extends Controller
                 'email' => $request->email,
                 'prioridade' => $request->prioridade,
                 'unidade' => $request->id_unidade,
-                'tipo_atendimento' => '1',
-                'acao' => $request->acao,
+                'tipo_atendimento' => $request->tipo_atendimento,
                 'data' => $request->data,
                 'horario' => $request->horario,
             ]);
 
-            return redirect()->route('agenda-novo_agendamento_cad')->with('success', 'Agendamento realizado com sucesso!');
+            return redirect()->route('agenda-novo_agendamento_tec')->with('success', 'Agendamento realizado com sucesso!');
         }
         else{
-            return redirect()->route('agenda-novo_agendamento_cad')->with('error', 'Parece que ocorreu um erro nos dados ou o dia não está mais disponível.');
+            return redirect()->route('agenda-novo_agendamento_tec')->with('error', 'Parece que ocorreu um erro nos dados ou o dia não está mais disponível.');
         }
 
     }

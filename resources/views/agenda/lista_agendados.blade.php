@@ -49,7 +49,7 @@ function tipoAtendimento($id)
                             <th scope="col">Hora</th>
                             <th scope="col">Nome</th>
                             <th scope="col">CPF</th>
-                            <th scope="col">Tipo do Atendimento</th>
+                            <th scope="col">Ação</th>
                             <th scope="col">Prioridade</th>
                             {{-- <th scope="col">Data</th> --}}
                             <th scope="col">Ações</th>
@@ -62,7 +62,7 @@ function tipoAtendimento($id)
                                 <td class="horario">{{ $agendado->horario }}</td>
                                 <td class="nome">{{ $agendado->nome }}</td>
                                 <td class="cpf">{{ $agendado->cpf }}</td>
-                                <td class="tipo">{{ tipoAtendimento($agendado->tipo_atendimento) }}</td>
+                                <td class="tipo">{{ tipoAtendimento($agendado->acao) }}</td>
                                 @if ($agendado->prioridade == 0)
                                     <td class="prioridade">NORMAL</td>
                                 @else

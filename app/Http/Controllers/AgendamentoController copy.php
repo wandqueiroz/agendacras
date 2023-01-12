@@ -31,7 +31,7 @@ class AgendamentoController extends Controller
         $user = Auth::user();
         //print_r($user['id_lotacao']);
         //$agendados = Agendamento::all();
-        $agendados = Agendamento::where('data', $now/* date('Y-m-d' )*/)->where('unidade', $user['id_lotacao'])->where('tipo_atendimento', '1')->get();
+        $agendados = Agendamento::where('data', $now/* date('Y-m-d' )*/)->where('unidade', $user['id_lotacao'])->get();
         return view('agenda.lista_agendados', ['agendados' => $agendados]);
     }
 
@@ -132,8 +132,7 @@ class AgendamentoController extends Controller
                 'email' => $request->email,
                 'prioridade' => $request->prioridade,
                 'unidade' => $request->id_unidade,
-                'tipo_atendimento' => '1',
-                'acao' => $request->acao,
+                'tipo_atendimento' => $request->tipo_atendimento,
                 'data' => $request->data,
                 'horario' => $request->horario,
             ]);
