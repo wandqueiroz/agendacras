@@ -6,9 +6,11 @@
 $countEquipamento1 = 0;
 $countEquipamento2 = 0;
 $countEquipamento3 = 0;
+$countEquipamento4 = 0;
 $producaoDiaEquip1 = 0;
 $producaoDiaEquip2 = 0;
 $producaoDiaEquip3 = 0;
+$producaoDiaEquip4 = 0;
 $totalproducao = [
     'green' => 0,
     'yellow' => 0,
@@ -27,26 +29,35 @@ $corEquip3 = [
     'icon' => '',
     'cor' => '',
 ];
+$corEquip4 = [
+    'icon' => '',
+    'cor' => '',
+];
 
 foreach ($agendamento as $beneficiarios) {
-    if ($beneficiarios->equipamento === '1') {
+    if ($beneficiarios->unidade === '1') {
         $countEquipamento1++;
-    } elseif ($beneficiarios->equipamento === '2') {
+    } elseif ($beneficiarios->unidade === '2') {
         $countEquipamento2++;
-    } elseif ($beneficiarios->equipamento === '3') {
+    } elseif ($beneficiarios->unidade === '3') {
         $countEquipamento3++;
+    } elseif ($beneficiarios->unidade === '4') {
+        $countEquipamento4++;
     }
 }
 
 foreach ($agendamento_distinct as $retorno) {
-    if ($retorno->equipamento == '1') {
+    if ($retorno->unidade == '1') {
         $producaoDiaEquip1++;
     }
-    if ($retorno->equipamento == '2') {
+    if ($retorno->unidade == '2') {
         $producaoDiaEquip2++;
     }
-    if ($retorno->equipamento == '3') {
+    if ($retorno->unidade == '3') {
         $producaoDiaEquip3++;
+    }
+    if ($retorno->unidade == '4') {
+        $producaoDiaEquip4++;
     }
 }
 
@@ -91,7 +102,7 @@ if ($producaoDiaEquip2 != 0) {
     $corEquip2['cor'] = 'Crimson';
 }
 
-if ($task == 1) {
+
     if ($producaoDiaEquip3 != 0) {
         if ($countEquipamento3 / $producaoDiaEquip3 >= 10) {
             $totalproducao['green']++;
@@ -111,7 +122,26 @@ if ($task == 1) {
         $corEquip3['icon'] = 'redIcon';
         $corEquip3['cor'] = 'Crimson';
     }
-}
+
+    if ($producaoDiaEquip4 != 0) {
+        if ($countEquipamento4 / $producaoDiaEquip4 >= 10) {
+            $totalproducao['green']++;
+            $corEquip4['icon'] = 'greenIcon';
+            $corEquip4['cor'] = 'ForestGreen';
+        } elseif ($countEquipamento4 / $producaoDiaEquip4 < 10 && $countEquipamento4 / $producaoDiaEquip4 >= 5) {
+            $totalproducao['yellow']++;
+            $corEquip4['icon'] = 'yellowIcon';
+            $corEquip4['cor'] = 'GoldenRod';
+        } else {
+            $totalproducao['red']++;
+            $corEquip4['icon'] = 'redIcon';
+            $corEquip4['cor'] = 'Crimson';
+        }
+    } else {
+        $totalproducao['red']++;
+        $corEquip4['icon'] = 'redIcon';
+        $corEquip4['cor'] = 'Crimson';
+    }
 
 function getDiasUteis($dtInicio, $dtFim, $feriados = [])
 {
@@ -149,6 +179,7 @@ function calcula_porcentagem(float $valor_base, float $valor)
         echo "got $e";
     }
 }
+
 ?>
 
 @section('content')
@@ -157,9 +188,9 @@ function calcula_porcentagem(float $valor_base, float $valor)
         <div class="row">
             <div class="col-md-8">
                 @if ($task == 1)
-                    <h1 class="title text-uppercase text-center text-info mb-3"> Dashboard Geral de Entregas de Almoços
-                        {{-- {{ count($agendamento) }} -
-                    {{ $producaoDiaEquip2 }} - {{ $producaoDiaEquip3 }} --}} </h1>
+                    <h1 class="title text-uppercase text-center text-info mb-3"> Dashboard Geral Atendimentod do Cadastro Único
+                         - {{ count($agendamento) }} -
+                    {{ $countEquipamento1 }} - {{ $countEquipamento2 }} - {{ $countEquipamento3 }} - {{ $countEquipamento4 }}  </h1>
                 @elseif($task == 2)
                     <h1 class="title text-uppercase text-center text-info mb-3"> Dashboard Geral de Entregas de Sopas
                         {{-- {{ count($agendamento) }} -
@@ -296,26 +327,30 @@ function calcula_porcentagem(float $valor_base, float $valor)
                                 <tbody>
                                     <tr>
                                         <td><a class="myLink" href="/dash/1/{{ $task }}"><strong>
-                                                    Bezerra</strong></a></td>
-                                        <td><span class="badge badge-success">Shipped</span></td>
+                                                    Ant. Bezerra</strong></a></td>
+                                        <td><span class="info-box-icon" style="color:{{ $corEquip1['cor'] }}"><i
+                                    class="fa fa-bookmark"></i></span></td>
 
                                     </tr>
                                     <tr>
                                         <td><a class="myLink" href="/dash/2/{{ $task }}"
                                             ><strong>Aracapé</strong></a></td>
-                                        <td><span class="badge badge-warning">Pending</span></td>
+                                        <td><span class="info-box-icon" style="color:{{ $corEquip2['cor'] }}"><i
+                                    class="fa fa-bookmark"></i></span></td>
 
                                     </tr>
                                     <tr>
                                         <td><a class="myLink" href="/dash/3/{{ $task }}"><strong>Barra do
                                                     Ceará</strong></a></td>
-                                        <td><span class="badge badge-danger">Delivered</span></td>
+                                        <td><span class="info-box-icon" style="color:{{ $corEquip3['cor'] }}"><i
+                                    class="fa fa-bookmark"></i></span></td>
 
                                     </tr>
                                     <tr>
                                         <td><a class="myLink" href="/dash/1/{{ $task }}"><strong>Bela
                                                     Vista</strong></a></td>
-                                        <td><span class="badge badge-danger">Delivered</span></td>
+                                        <td><span class="info-box-icon" style="color:{{ $corEquip4['cor'] }}"><i
+                                    class="fa fa-bookmark"></i></span></td>
 
                                     </tr>
 
@@ -469,22 +504,21 @@ function calcula_porcentagem(float $valor_base, float $valor)
                     <table id="myTable" class="table table-bordered table-striped dataTable dtr-inline">
                         <thead>
                             <tr>
-                                <th scope="col">Id Entrega</th>
-                                <th scope="col">Id Beneficiário</th>
+                                <th scope="col">Id</th>
+                                
                                 <th scope="col">Nome</th>
-                                <th scope="col">Equipamento</th>
-                                <th scope="col">Data Entrega</th>
+                                <th scope="col">Unidade</th>
+                                <th scope="col">Data Atendimento</th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($agendamento as $agendamento_entrega)
+                            @foreach ($agendamento as $agendamentos)
                                 <tr>
-                                    <td class="id">{{ $agendamento_entrega->id }}</td>
-                                    <td class="cpf">{{ $agendamento_entrega->id_beneficiario }}</td>
-                                    <td class="nis">{{ $agendamento_entrega->nome }}</td>
-                                    <td class="nome">{{ $agendamento_entrega->equipamento }}</td>
-                                    <td class="dt_nascimento">{{ $agendamento_entrega->data }}</td>
+                                    <td class="id">{{ $agendamentos->id }}</td>
+                                    <td class="nis">{{ $agendamentos->nome }}</td>
+                                    <td class="nome">{{ $agendamentos->unidade }}</td>
+                                    <td class="dt_nascimento">{{ $agendamentos->data }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -639,7 +673,7 @@ function calcula_porcentagem(float $valor_base, float $valor)
             icon: @php echo $corEquip3['icon'] @endphp
         }).bindPopup('CRAS BARRA DO CEARA');
         var bela_vista = L.marker([-3.752174852258905, -38.56037893565068], {
-            icon: @php echo $corEquip3['icon'] @endphp
+            icon: @php echo $corEquip4['icon'] @endphp
         }).bindPopup('CRAS BELA VISTA');
 
         var equipamentos = L.layerGroup([antonio_bezerra, aracape, barra_do_ceara, bela_vista]);
