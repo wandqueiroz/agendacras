@@ -188,7 +188,7 @@ function calcula_porcentagem(float $valor_base, float $valor)
         <div class="row">
             <div class="col-md-8">
                 @if ($task == 1)
-                    <h1 class="title text-uppercase text-center text-info mb-3"> Dashboard Geral Atendimentod do Cadastro Único
+                    <h1 class="title text-uppercase text-center text-info mb-3"> Dashboard Geral Atendimento    do Cadastro Único
                          - {{ count($agendamento) }} -
                     {{ $countEquipamento1 }} - {{ $countEquipamento2 }} - {{ $countEquipamento3 }} - {{ $countEquipamento4 }}  </h1>
                 @elseif($task == 2)
@@ -505,7 +505,7 @@ function calcula_porcentagem(float $valor_base, float $valor)
                         <thead>
                             <tr>
                                 <th scope="col">Id</th>
-                                
+
                                 <th scope="col">Nome</th>
                                 <th scope="col">Unidade</th>
                                 <th scope="col">Data Atendimento</th>
