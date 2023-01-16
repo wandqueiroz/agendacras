@@ -273,18 +273,18 @@ return [
         ],
         [
             'text'    => 'Dashboard',
-            'icon'    => 'fas fa-fw fa-chart-line',
+            'icon'    => 'fa fa-chart-pie',
             //'url'  => 'dash_geral',
 
             'submenu' => [
                 [
-                    'text' => 'Almoços',
-                    'icon' => 'fas fa-fw fa-utensils',
+                    'text' => 'Cadastro Único',
+                    'icon' => 'far fa-chart-bar',
                     'url'  => '/1/dash_geral',
                 ],
                 [
-                    'text' => 'Sopas',
-                    'icon'    => 'fas fa-mug-hot',
+                    'text' => 'Atendimento Técnico',
+                    'icon'    => 'far fa-chart-bar',
                     'url'  => '/2/dash_geral',
                 ],
             ],

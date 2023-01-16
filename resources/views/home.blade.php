@@ -14,18 +14,15 @@
                 <div class="mybtn">
                     <a id="btn3" class="btn btn-lg bg-info" href="/novo_agendamento_cad">
                         <i class="fas fa-calendar-alt"></i>
-                        <h4>AGENDAR ATENDIMENTO CADASTRO ÚNICO</h4>
+                        <h5>AGENDAR ATENDIMENTO CADASTRO ÚNICO</h5>
 
                     </a>
 
                     <a id="btn3" class="btn btn-lg bg-info" href="/novo_agendamento_tec">
                         <i class="fas fa-calendar-alt"></i>
-                        <h4>AGENDAR ATENDIMENTO TÉCNICO</h4>
+                        <h5>AGENDAR ATENDIMENTO TÉCNICO</h5>
 
                     </a>
-
-
-
 
 
                     {{-- <a class="btn btn-lg bg-info menu mr-3" href="/novo_agendamento">
@@ -33,7 +30,7 @@
                     </a> --}}
                     <a id="btn3" class="btn btn-lg bg-secondary menu position-relative" href="/lista_agendados">
                         <i class="fa fa-list-ol"></i></i>
-                        <h4>LISTAR ATENDIMENTOS CADASTRO ÚNICO</h4>
+                        <h5>LISTAR ATENDIMENTOS CADASTRO ÚNICO</h5>
                         <span class="position-relative top-100 start-100 translate-middle badge rounded-pill bg-warning">
                             {{ count($agendados) }}
 
@@ -42,7 +39,7 @@
 
                     <a id="btn4" class="btn btn-lg bg-secondary menu position-relative" href="/lista_agendados">
                         <i class="fa fa-list-ol"></i></i>
-                        <h4>LISTAR ATENDIMENTOS TÉCNICOS</h4>
+                        <h5>LISTAR ATENDIMENTOS TÉCNICOS</h5>
                         <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-warning">
                             {{ count($agendados) }}
 
@@ -121,7 +118,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <style>
         .mybtn>.btn {
-            width: 20rem;
+            width: 40%;
             height: 13rem;
             margin: 2rem 4px 0 4px;
             text-align: center;
