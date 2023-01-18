@@ -275,9 +275,9 @@
                     _token: _token
                 },
                 success: function(response) {
-                    if (response) {
+                    if (response && response.success.length > 0) {
                         console.log(response.success[0]);
-
+                        alert(response.success.length);
                         const btn_modalBusca = $('#btnModalBusca');
                         btn_modalBusca.click();
                         $('#inputNomeNovoAg').val(response.success[0]['nome']);
@@ -285,6 +285,8 @@
                         $('#inputCelNovoAg').val(response.success[0]['tel1_rf']);
                         $('#inputEmailNovoAg').val(response.success[0]['email']);
 
+                    }else {
+                        alert('BENEFICIÁRIO NÃO LOCALIZADO');
                     }
 
                     //alert('oi');
@@ -300,7 +302,7 @@
                 },
                 error: function(error) {
 
-                    alert(num);
+                    alert("BENEFICIÁRIO NÃO LOCALIZADO!");
 
                 }
             });
