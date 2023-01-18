@@ -31,7 +31,7 @@ class AgendamentoController extends Controller
         $user = Auth::user();
         //print_r($user['id_lotacao']);
         //$agendados = Agendamento::all();
-        $agendados = Agendamento::where('data', $now/* date('Y-m-d' )*/)->where('unidade', $user['id_lotacao'])->where('tipo_atendimento', '1')->get();
+        $agendados = Agendamento::where('data', $now/* date('Y-m-d' )*/)->where('unidade', $user['id_lotacao'])->get();
         return view('agenda.lista_agendados', ['agendados' => $agendados]);
     }
 
@@ -77,6 +77,23 @@ class AgendamentoController extends Controller
         //$horarios = array('08:00', '08:40', '09:00', '15:40', '16:00', '11:20', '13:40', '14:20');
 
         return response()->json(['success'=> $users]);
+    }
+
+      /**
+     * .
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function buscaBeneficiario(Request $request)
+    {
+        $modo = $request->get('modo');
+        $numero = $request->get('num');
+        $beneficiario = DB::select('select * from beneficiarios where cpf = ' . $numero );
+
+        //$horarios = array('08:00', '08:40', '09:00', '15:40', '16:00', '11:20', '13:40', '14:20');
+
+        return response()->json(['success'=> $beneficiario]);
     }
 
 

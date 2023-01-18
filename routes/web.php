@@ -44,6 +44,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 /* Route::get('/requerimento', [App\Http\Controllers\SetorPessoalController::class, 'requerimento'])->name('forms-requerimento'); */
 
 Route::post('/', [\App\Http\Controllers\AgendamentoController::class, 'store'])->name('agendamento-store');
+Route::post('buscaBeneficiario', [\App\Http\Controllers\AgendamentoController::class, 'buscaBeneficiario']);
 
 Route::post('/chamaNovo', [\App\Http\Controllers\AgendamentoController::class, 'chamarNovo'])->name('agendamento-chamarNovo');
 

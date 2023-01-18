@@ -283,7 +283,7 @@ return [
                     'url'  => '/1/dash_geral',
                 ],
                 [
-                    'text' => 'Atendimento Técnico',
+                    'text' => 'At. Técnico',
                     'icon'    => 'far fa-chart-bar',
                     'url'  => '/2/dash_geral',
                 ],

@@ -40,6 +40,51 @@
             <div class="horarios-corpo"></div>
         </div>
     </div>
+    <button type='button' id="btnModalBusca" class='btn btn-success' data-toggle='modal'
+        data-target='#novoAgendamentoModal'></button>
+
+    <div class="modal fade" id="modalBuscaCPF" tabindex="-1" aria-labelledby="buscaCPF" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-info" id="novoAgendamentoModalLabel">Localizar beneficiário</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-novo-agendamento">
+                        <form>
+                            @csrf
+                            <div class="row">
+                                <div class="form-group col-md-3">
+                                    <p>Pesquisar por:</p>
+                                </div>
+                                <div class="form-group col-md-3">
+
+                                    <select class="custom-select" id="modoBuscaBeneficiario" required>
+                                        <option value="cpf">CPF</option>
+                                        <option value="nis">NIS</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input class="form-control" type="text" id="campoBuscaBeneficiario"
+                                        placeholder="somente números">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <button class="btn btn-primary btn-buscaBeneficiario" style="width:100%"><i
+                                            class="fas fa-search"></i> Buscar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 
     <div class="modal fade" id="novoAgendamentoModal" tabindex="-1" aria-labelledby="novoAgendamentoModalLabel"
@@ -60,7 +105,7 @@
                                 <div class="form-group col-md-8">
                                     <label for="inputNomeNovoAg" class="form-label">Nome</label>
                                     <input type="text" class="form-control" id="inputNomeNovoAg"
-                                        aria-describedby="nomeHelp" name="nome" required>
+                                        aria-describedby="nomeHelp" name="nome" readonly required>
                                     {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                                 </div>
                                 <div class="form-group col-md-4">
@@ -79,20 +124,20 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputCpfNovoAg" class="form-label">CPF</label>
                                     <input type="text" class="form-control" id="inputCpfNovoAg"
-                                        aria-describedby="cpfHelp" name="cpf" required>
+                                        aria-describedby="cpfHelp" name="cpf" readonly required>
                                     {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputCelNovoAg" class="form-label">Celular</label>
                                     <input type="text" class="form-control" id="inputCelNovoAg"
-                                        aria-describedby="celHelp" name="celular" required>
+                                        aria-describedby="celHelp" name="celular" readonly required>
                                     {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmailNovoAg" class="form-label">E-mail</label>
                                 <input type="email" class="form-control" id="inputEmailNovoAg"
-                                    aria-describedby="emailHelp" name="email" required>
+                                    aria-describedby="emailHelp" name="email" readonly required>
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
                             <div class="row">
@@ -105,7 +150,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputTipoNovoAg" class="form-label">Ação</label>
-                                    <select class="custom-select" name="acao" required>
+                                    <select class="custom-select" name="tipo_atendimento" required>
                                         <option selected>Selecione</option>
                                         <option value="1">NOVO CADASTRO UNICO</option>
                                         <option value="2">ATUALIZAÇÃO CADASTRAL</option>
@@ -167,6 +212,7 @@
             $('#inputCpfNovoAg').mask('000.000.000-00');
             $('#inputCelNovoAg').mask('(00) 0 0000-0000');
 
+
             $("#bairro").change(function() {
                 $(".horarios-header").empty();
                 $(".horarios-corpo").empty();
@@ -206,30 +252,59 @@
 
                     }
                 });
-            });
-
-            $("#unidade").change(function() {
-
-                $(".horarios-header").empty();
-                $(".horarios-corpo").empty();
 
             });
 
-            var corpo = $("<button type='button' id='08-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>08:00</button><button type='button' id='08-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>08:20</button>" +
-                "<button type='button' id='08-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>08:40</button><button type='button' id='09-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>09:00</button>" +
-                "<button type='button' id='09-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>09:20</button><button type='button' id='09-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>09:40</button>" +
-                "<button type='button' id='10-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>10:00</button><button type='button' id='10-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>10:20</button>" +
-                "<button type='button' id='10-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>10:40</button><button type='button' id='11-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>11:00</button>" +
-                "<button type='button' id='11-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>11:20</button><button type='button' id='11-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>11:40</button>" +
-                "<button type='button' id='13-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>13:00</button><button type='button' id='13-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>13:20</button>" +
-                "<button type='button' id='13-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>13:40</button><button type='button' id='14-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>14:00</button>" +
-                "<button type='button' id='14-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>14:20</button><button type='button' id='14-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>14:40</button>" +
-                "<button type='button' id='15-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>15:00</button><button type='button' id='15-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>15:20</button>" +
-                "<button type='button' id='15-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>15:40</button><button type='button' id='16-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>16:00</button>" +
-                "<button type='button' id='16-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>16:20</button><button type='button' id='16-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>16:40</button>");
 
-            $(".horarios-corpo").append(corpo);
 
+
+        });
+
+        $('.btn-buscaBeneficiario').on('click', function() {
+
+            var modo = $('#modoBuscaBeneficiario option:selected').val();
+            var num = $('#campoBuscaBeneficiario').val();
+            let _token = $('meta[name="csrf-token"]').attr('content');
+
+            $.ajax({
+                url: "/buscaBeneficiario",
+                type: "POST",
+                data: {
+                    modo: modo,
+                    num: num,
+                    _token: _token
+                },
+                success: function(response) {
+                    if (response) {
+                        console.log(response.success[0]);
+
+                        const btn_modalBusca = $('#btnModalBusca');
+                        btn_modalBusca.click();
+                        $('#inputNomeNovoAg').val(response.success[0]['nome']);
+                        $('#inputCpfNovoAg').val(response.success[0]['cpf']);
+                        $('#inputCelNovoAg').val(response.success[0]['tel1_rf']);
+                        $('#inputEmailNovoAg').val(response.success[0]['email']);
+
+                    }
+
+                    //alert('oi');
+                    /* if (response) {
+
+                            for (let i = 0; i < response.success.length; ++i) {
+                                let hora_replaced = response.success[i]['horario'].replace(":", "-");
+                                fazer(hora_replaced)
+                            }
+
+
+                        } */
+                },
+                error: function(error) {
+
+                    alert(num);
+
+                }
+            });
+            return false;
 
         });
 
