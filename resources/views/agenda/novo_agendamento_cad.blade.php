@@ -41,7 +41,7 @@
         </div>
     </div>
     <button type='button' id="btnModalBusca" class='btn btn-success' data-toggle='modal'
-        data-target='#novoAgendamentoModal'></button>
+        data-target='#novoAgendamentoModal' hidden></button>
 
     <div class="modal fade" id="modalBuscaCPF" tabindex="-1" aria-labelledby="buscaCPF" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -150,7 +150,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputTipoNovoAg" class="form-label">Ação</label>
-                                    <select class="custom-select" name="tipo_atendimento" required>
+                                    <select class="custom-select" name="acao" required>
                                         <option selected>Selecione</option>
                                         <option value="1">NOVO CADASTRO UNICO</option>
                                         <option value="2">ATUALIZAÇÃO CADASTRAL</option>

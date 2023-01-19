@@ -89,7 +89,7 @@ class AgendamentoController extends Controller
     {
         $modo = $request->get('modo');
         $numero = $request->get('num');
-        $beneficiario = DB::select('select * from beneficiarios where cpf = ' . $numero );
+        $beneficiario = DB::select('select * from beneficiarios where '. $modo .' = ' . $numero );
 
         //$horarios = array('08:00', '08:40', '09:00', '15:40', '16:00', '11:20', '13:40', '14:20');
 
@@ -116,7 +116,8 @@ class AgendamentoController extends Controller
                 'email' => $request->email,
                 'prioridade' => $request->prioridade,
                 'unidade' => $request->id_unidade,
-                'tipo_atendimento' => $request->tipo_atendimento,
+                'tipo_atendimento' => '1',
+                'acao' => $request->acao,
                 'data' => $request->data,
                 'horario' => $request->horario,
             ]);
