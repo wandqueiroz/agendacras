@@ -32,7 +32,7 @@
                         <i class="fa fa-list-ol"></i></i>
                         <h5>LISTAR ATENDIMENTOS CADASTRO ÚNICO</h5>
                         <span class="position-relative top-100 start-100 translate-middle badge rounded-pill bg-warning">
-                            {{ count($agendados) }}
+                            {{ count($agendadosCadastro) }}
 
                         </span>
                     </a>
@@ -41,7 +41,7 @@
                         <i class="fa fa-list-ol"></i></i>
                         <h5>LISTAR ATENDIMENTOS TÉCNICOS</h5>
                         <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-warning">
-                            {{ count($agendados) }}
+                            {{ count($agendadosTecnico) }}
 
                         </span>
                     </a>

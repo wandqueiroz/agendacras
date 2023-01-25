@@ -17,6 +17,7 @@ class Agendamento extends Model
         'prioridade',
         'unidade',
         'tipo_atendimento',
+        'acao',
         'data',
         'horario',
     ];

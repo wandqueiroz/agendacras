@@ -36,14 +36,14 @@ Route::post('orderdata', [App\Http\Controllers\AgendamentoController::class, 'or
 
 Route::post('orderdataTec', [App\Http\Controllers\AgendamentoTecController::class, 'orderData']);
 
-Route::post('getUnidadePorBairro', [App\Http\Controllers\AgendamentoController::class, 'getUnidadePorBairro']);
+Route::post('getUnidades', [App\Http\Controllers\AgendamentoController::class, 'getUnidades']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 /* Route::get('/requerimento', [App\Http\Controllers\SetorPessoalController::class, 'requerimento'])->name('forms-requerimento'); */
 
-Route::post('/', [\App\Http\Controllers\AgendamentoController::class, 'store'])->name('agendamento-store');
+/* Route::post('/', [\App\Http\Controllers\AgendamentoController::class, 'store'])->name('agendamento-store'); */
 Route::post('buscaBeneficiario', [\App\Http\Controllers\AgendamentoController::class, 'buscaBeneficiario']);
 
 Route::post('/chamaNovo', [\App\Http\Controllers\AgendamentoController::class, 'chamarNovo'])->name('agendamento-chamarNovo');
@@ -51,7 +51,7 @@ Route::post('/chamaNovo', [\App\Http\Controllers\AgendamentoController::class, '
 Route::get('/novo_agendamento_cad', [App\Http\Controllers\AgendamentoController::class, 'cadastrar_novo'])->name('agenda-novo_agendamento_cad');
 Route::get('/novo_agendamento_tec', [App\Http\Controllers\AgendamentoTecController::class, 'cadastrar_novo'])->name('agenda-novo_agendamento_tec');
 
-Route::post('/salvar_atendimento_cad', [App\Http\Controllers\AgendamentoController::class, 'salvar_atendimento'])->name('agenda-salvar_atendimento_cad');
+Route::post('/salvar_atendimento_cad', [App\Http\Controllers\AgendamentoController::class, 'salvar_atendimento'])->name('agendamento-salvar_atendimento_cad');
 Route::post('/salvar_atendimento_tec', [App\Http\Controllers\AgendamentoTecController::class, 'salvar_atendimento'])->name('agenda-salvar_atendimento_tec');
 
 Route::get('/lista_agendados', [App\Http\Controllers\AgendamentoController::class, 'index'])->name('agenda-lista_agendados');

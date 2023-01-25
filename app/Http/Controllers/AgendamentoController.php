@@ -38,7 +38,8 @@ class AgendamentoController extends Controller
 
     public function cadastrar_novo()
     {
-        return view('agenda.novo_agendamento_cad');
+        $unidades = DB::select('select * from cras order by nome_cras');
+        return view('agenda.novo_agendamento_cad', ['unidades' => $unidades]);
     }
 
 
@@ -69,14 +70,14 @@ class AgendamentoController extends Controller
         return response()->json(['success'=> $users]);
     }
 
-    public function getUnidadePorBairro(Request $request)
+    public function getUnidades(Request $request)
     {
-        $id_bairro = $request->get('id_bairro');
-        $users = Bairro_unidade::where('id_bairro', $id_bairro)->get();
+        $regional = $request->get('regional');
+        $unidades = DB::select('select * from cras where order by nome_cras');
 
         //$horarios = array('08:00', '08:40', '09:00', '15:40', '16:00', '11:20', '13:40', '14:20');
 
-        return response()->json(['success'=> $users]);
+        return response()->json(['success'=> $unidades]);
     }
 
       /**

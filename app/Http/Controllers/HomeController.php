@@ -32,8 +32,9 @@ class HomeController extends Controller
         $user = Auth::user();
         //print_r($user['id_lotacao']);
         //$agendados = Agendamento::all();
-        $agendados = Agendamento::where('data', $now/* date('Y-m-d' )*/)->where('unidade', $user['id_lotacao'])->where('tipo_atendimento', '1')->get();
-        return view('home', ['agendados' => $agendados]);
+        $agendadosCadastro = Agendamento::where('data', $now/* date('Y-m-d' )*/)->where('unidade', $user['id_lotacao'])->where('tipo_atendimento', '1')->get();
+        $agendadosTecnico = Agendamento::where('data', $now/* date('Y-m-d' )*/)->where('unidade', $user['id_lotacao'])->where('tipo_atendimento', '2')->get();
+        return view('home', ['agendadosCadastro' => $agendadosCadastro, 'agendadosTecnico' => $agendadosTecnico]);
 
     }
 }

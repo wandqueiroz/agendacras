@@ -10,17 +10,17 @@
 @section('content')
 
     <div class="container div-unidades">
-        <div class="row mb-4">
-            <div class="form-group col-md-5">
-                <label for="inputNomeNovoAg" class="form-label">Selecione o Bairro</label>
-                <select class="custom-select custom-select-lg mb-3" id="bairro">
+        <div class="center mb-4">
+
+                <label for="unidadeInput" class="form-label">Selecione a Unidade de Referência</label>
+                <select class="custom-select custom-select-lg mb-3" id="unidade">
                     <option selected>-</option>
-                    <option value="1">SÃO JOÃO DO TAUAPE</option>
-                    <option value="2">CONJUNTO CEARÁ</option>
-                    <option value="3">EDSON QUEIROZ</option>
+                    @foreach ($unidades as $unidade)
+                    <option value={{ $unidade->id }}>{{ $unidade->nome_cras }}</option>
+                    @endforeach
                 </select>
-            </div>
-            <div class="col-md-1 mt-4" style="text-align:center;">
+
+            {{-- <div class="col-md-1 mt-4" style="text-align:center;">
                 <i class="fas fa-arrow-circle-right fa-3x" style="color:rgb(255, 145, 0);"></i>
             </div>
             <div class="form-group col-md-5">
@@ -29,7 +29,7 @@
                     <option selected>-</option>
 
                 </select>
-            </div>
+            </div> --}}
         </div>
 
     </div>
@@ -99,7 +99,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-novo-agendamento">
-                        <form action="{{ route('agendamento-store') }}" method="POST">
+                        <form action="{{ route('agendamento-salvar_atendimento_cad') }}" method="POST">
                             @csrf
                             <div class="row">
                                 <div class="form-group col-md-8">
@@ -149,9 +149,9 @@
                                         aria-describedby="idUnidadeHelp" name="id_unidade" hidden>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="inputTipoNovoAg" class="form-label">Ação</label>
+                                    <label for="inputAcaoNovoAg" class="form-label">Ação</label>
                                     <select class="custom-select" name="acao" required>
-                                        <option selected>Selecione</option>
+                                        <option value="0">SELECIONE</option>
                                         <option value="1">NOVO CADASTRO UNICO</option>
                                         <option value="2">ATUALIZAÇÃO CADASTRAL</option>
                                         <option value="3">DECLARAÇÃO DE NIS</option>
@@ -213,17 +213,17 @@
             $('#inputCelNovoAg').mask('(00) 0 0000-0000');
 
 
-            $("#bairro").change(function() {
+            $("#regional").change(function() {
                 $(".horarios-header").empty();
                 $(".horarios-corpo").empty();
-                var id_bairro = $('#bairro option:selected').val();
+                var regional = $('#regional option:selected').val();
                 let _token = $('meta[name="csrf-token"]').attr('content');
                 $("#unidade").empty();
                 $.ajax({
-                    url: "/getUnidadePorBairro",
+                    url: "/getUnidades",
                     type: "POST",
                     data: {
-                        id_bairro: id_bairro,
+                        regional: regional,
                         _token: _token
                     },
                     success: function(response) {
@@ -231,8 +231,8 @@
 
                         for (i = 0; i < response.success.length; i++) {
                             $('#unidade').append($('<option>', {
-                                value: response.success[i]['id_unidade'],
-                                text: response.success[i]['unidade']
+                                value: response.success[i]['id'],
+                                text: response.success[i]['nome_cras']
                             }));
                         }
 
