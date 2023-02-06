@@ -52,7 +52,7 @@ Route::get('/novo_agendamento_cad', [App\Http\Controllers\AgendamentoController:
 Route::get('/novo_agendamento_tec', [App\Http\Controllers\AgendamentoTecController::class, 'cadastrar_novo'])->name('agenda-novo_agendamento_tec');
 
 Route::post('/salvar_atendimento_cad', [App\Http\Controllers\AgendamentoController::class, 'salvar_atendimento'])->name('agendamento-salvar_atendimento_cad');
-Route::post('/salvar_atendimento_tec', [App\Http\Controllers\AgendamentoTecController::class, 'salvar_atendimento'])->name('agenda-salvar_atendimento_tec');
+Route::post('/salvar_atendimento_tec', [App\Http\Controllers\AgendamentoTecController::class, 'salvar_atendimento'])->name('agendamento-salvar_atendimento_tec');
 
 Route::get('/lista_agendados', [App\Http\Controllers\AgendamentoController::class, 'index'])->name('agenda-lista_agendados');
 

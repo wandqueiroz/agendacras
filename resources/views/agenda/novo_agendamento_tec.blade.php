@@ -10,17 +10,17 @@
 @section('content')
 
     <div class="container div-unidades">
-        <div class="row mb-4">
-            <div class="form-group col-md-5">
-                <label for="inputNomeNovoAg" class="form-label">Selecione o Bairro</label>
-                <select class="custom-select custom-select-lg mb-3" id="bairro">
+        <div class="center mb-4">
+
+                <label for="unidadeInput" class="form-label">Selecione a Unidade de Referência</label>
+                <select class="custom-select custom-select-lg mb-3" id="unidade">
                     <option selected>-</option>
-                    <option value="1">SÃO JOÃO DO TAUAPE</option>
-                    <option value="2">CONJUNTO CEARÁ</option>
-                    <option value="3">EDSON QUEIROZ</option>
+                    @foreach ($unidades as $unidade)
+                    <option value={{ $unidade->id }}>{{ $unidade->nome_cras }}</option>
+                    @endforeach
                 </select>
-            </div>
-            <div class="col-md-1 mt-4" style="text-align:center;">
+
+            {{-- <div class="col-md-1 mt-4" style="text-align:center;">
                 <i class="fas fa-arrow-circle-right fa-3x" style="color:rgb(255, 145, 0);"></i>
             </div>
             <div class="form-group col-md-5">
@@ -29,7 +29,7 @@
                     <option selected>-</option>
 
                 </select>
-            </div>
+            </div> --}}
         </div>
 
     </div>
@@ -38,6 +38,51 @@
         <div class="horarios">
             <div class="horarios-header"></div>
             <div class="horarios-corpo"></div>
+        </div>
+    </div>
+    <button type='button' id="btnModalBusca" class='btn btn-success' data-toggle='modal'
+        data-target='#novoAgendamentoModal' hidden></button>
+
+    <div class="modal fade" id="modalBuscaCPF" tabindex="-1" aria-labelledby="buscaCPF" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-info" id="novoAgendamentoModalLabel">Localizar beneficiário</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-novo-agendamento">
+                        <form>
+                            @csrf
+                            <div class="row">
+                                <div class="form-group col-md-3">
+                                    <p>Pesquisar por:</p>
+                                </div>
+                                <div class="form-group col-md-3">
+
+                                    <select class="custom-select" id="modoBuscaBeneficiario" required>
+                                        <option value="cpf">CPF</option>
+                                        <option value="nis">NIS</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input class="form-control" type="text" id="campoBuscaBeneficiario"
+                                        placeholder="somente números">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <button class="btn btn-primary btn-buscaBeneficiario" style="width:100%"><i
+                                            class="fas fa-search"></i> Buscar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 
@@ -54,13 +99,13 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-novo-agendamento">
-                        <form action="{{ route('agendamento-store') }}" method="POST">
+                        <form action="{{ route('agendamento-salvar_atendimento_tec') }}" method="POST">
                             @csrf
                             <div class="row">
                                 <div class="form-group col-md-8">
                                     <label for="inputNomeNovoAg" class="form-label">Nome</label>
                                     <input type="text" class="form-control" id="inputNomeNovoAg"
-                                        aria-describedby="nomeHelp" name="nome" required>
+                                        aria-describedby="nomeHelp" name="nome" readonly required>
                                     {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                                 </div>
                                 <div class="form-group col-md-4">
@@ -79,20 +124,20 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputCpfNovoAg" class="form-label">CPF</label>
                                     <input type="text" class="form-control" id="inputCpfNovoAg"
-                                        aria-describedby="cpfHelp" name="cpf" required>
+                                        aria-describedby="cpfHelp" name="cpf" readonly required>
                                     {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputCelNovoAg" class="form-label">Celular</label>
                                     <input type="text" class="form-control" id="inputCelNovoAg"
-                                        aria-describedby="celHelp" name="celular" required>
+                                        aria-describedby="celHelp" name="celular" readonly required>
                                     {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmailNovoAg" class="form-label">E-mail</label>
                                 <input type="email" class="form-control" id="inputEmailNovoAg"
-                                    aria-describedby="emailHelp" name="email" required>
+                                    aria-describedby="emailHelp" name="email" readonly required>
                                 {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                             </div>
                             <div class="row">
@@ -104,9 +149,9 @@
                                         aria-describedby="idUnidadeHelp" name="id_unidade" hidden>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="inputTipoNovoAg" class="form-label">Tipo do Atendimento</label>
-                                    <select class="custom-select" name="tipo_atendimento" required>
-                                        <option selected>Selecione</option>
+                                    <label for="inputAcaoNovoAg" class="form-label">Ação</label>
+                                    <select class="custom-select" name="acao" required>
+                                        <option value="0">SELECIONE</option>
                                         <option value="1">NOVO CADASTRO UNICO</option>
                                         <option value="2">ATUALIZAÇÃO CADASTRAL</option>
                                         <option value="3">DECLARAÇÃO DE NIS</option>
@@ -167,17 +212,18 @@
             $('#inputCpfNovoAg').mask('000.000.000-00');
             $('#inputCelNovoAg').mask('(00) 0 0000-0000');
 
-            $("#bairro").change(function() {
+
+            $("#regional").change(function() {
                 $(".horarios-header").empty();
                 $(".horarios-corpo").empty();
-                var id_bairro = $('#bairro option:selected').val();
+                var regional = $('#regional option:selected').val();
                 let _token = $('meta[name="csrf-token"]').attr('content');
                 $("#unidade").empty();
                 $.ajax({
-                    url: "/getUnidadePorBairro",
+                    url: "/getUnidades",
                     type: "POST",
                     data: {
-                        id_bairro: id_bairro,
+                        regional: regional,
                         _token: _token
                     },
                     success: function(response) {
@@ -185,8 +231,8 @@
 
                         for (i = 0; i < response.success.length; i++) {
                             $('#unidade').append($('<option>', {
-                                value: response.success[i]['id_unidade'],
-                                text: response.success[i]['unidade']
+                                value: response.success[i]['id'],
+                                text: response.success[i]['nome_cras']
                             }));
                         }
 
@@ -206,14 +252,61 @@
 
                     }
                 });
-            });
-
-            $("#unidade").change(function() {
-
-                $(".horarios-header").empty();
-                $(".horarios-corpo").empty();
 
             });
+
+
+
+
+        });
+
+        $('.btn-buscaBeneficiario').on('click', function() {
+
+            var modo = $('#modoBuscaBeneficiario option:selected').val();
+            var num = $('#campoBuscaBeneficiario').val();
+            let _token = $('meta[name="csrf-token"]').attr('content');
+
+            $.ajax({
+                url: "/buscaBeneficiario",
+                type: "POST",
+                data: {
+                    modo: modo,
+                    num: num,
+                    _token: _token
+                },
+                success: function(response) {
+                    if (response && response.success.length > 0) {
+                        console.log(response.success[0]);
+                        alert(response.success.length);
+                        const btn_modalBusca = $('#btnModalBusca');
+                        btn_modalBusca.click();
+                        $('#inputNomeNovoAg').val(response.success[0]['nome']);
+                        $('#inputCpfNovoAg').val(response.success[0]['cpf']);
+                        $('#inputCelNovoAg').val(response.success[0]['tel1_rf']);
+                        $('#inputEmailNovoAg').val(response.success[0]['email']);
+
+                    }else {
+                        alert('BENEFICIÁRIO NÃO LOCALIZADO');
+                    }
+
+                    //alert('oi');
+                    /* if (response) {
+
+                            for (let i = 0; i < response.success.length; ++i) {
+                                let hora_replaced = response.success[i]['horario'].replace(":", "-");
+                                fazer(hora_replaced)
+                            }
+
+
+                        } */
+                },
+                error: function(error) {
+
+                    alert("BENEFICIÁRIO NÃO LOCALIZADO!");
+
+                }
+            });
+            return false;
 
         });
 

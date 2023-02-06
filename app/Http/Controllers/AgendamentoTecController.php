@@ -38,7 +38,8 @@ class AgendamentoTecController extends Controller
 
     public function cadastrar_novo()
     {
-        return view('agenda.novo_agendamento_tec');
+        $unidades = DB::select('select * from cras order by nome_cras');
+        return view('agenda.novo_agendamento_tec', ['unidades' => $unidades]);
     }
 
 

@@ -37,17 +37,17 @@ $(document).ready(function () {
                 "");
             $(".horarios-header").append(titulo);
 
-            var corpo = $("<button type='button' id='08-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>08:00</button><button type='button' id='08-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>08:40</button>" +
-                "<button type='button' id='09-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>09:20</button>" +
-                "<button type='button' id='10-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>10:00</button>" +
-                "<button type='button' id='10-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>10:40</button>" +
-                "<button type='button' id='11-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>11:20</button>" +
-                "<button type='button' id='13-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>13:00</button>" +
-                "<button type='button' id='13-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>13:40</button>" +
-                "<button type='button' id='14-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>14:20</button>" +
-                "<button type='button' id='15-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>15:00</button>" +
-                "<button type='button' id='15-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>15:40</button>" +
-                "<button type='button' id='16-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#novoAgendamentoModal'>16:20</button>");
+            var corpo = $("<button type='button' id='08-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#modalBuscaCPF'>08:00</button><button type='button' id='08-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#modalBuscaCPF'>08:40</button>" +
+                "<button type='button' id='09-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#modalBuscaCPF'>09:20</button>" +
+                "<button type='button' id='10-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#modalBuscaCPF'>10:00</button>" +
+                "<button type='button' id='10-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#modalBuscaCPF'>10:40</button>" +
+                "<button type='button' id='11-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#modalBuscaCPF'>11:20</button>" +
+                "<button type='button' id='13-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#modalBuscaCPF'>13:00</button>" +
+                "<button type='button' id='13-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#modalBuscaCPF'>13:40</button>" +
+                "<button type='button' id='14-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#modalBuscaCPF'>14:20</button>" +
+                "<button type='button' id='15-00' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#modalBuscaCPF'>15:00</button>" +
+                "<button type='button' id='15-40' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#modalBuscaCPF'>15:40</button>" +
+                "<button type='button' id='16-20' class='btn btn-success btn-horarios' data-toggle='modal' data-target='#modalBuscaCPF'>16:20</button>");
 
             $(".horarios-corpo").append(corpo);
 
