@@ -30,20 +30,8 @@ function tipoAtendimento($id)
 
     <div class="container-fluid">
         <div class="row">
-
-                @if ($task == 1)
-                <div class="col-sm-12 mt-4"
-                style="background-color: #F8C405; border: solid 5px; border-color:#343A40; border-radius: 40px 40px 40px 40px;">
-                    <h2 class="text-center" style="color: #343A40"><strong>AGENDAMENTOS PARA CADASTRO ÚNICO</strong></h2>
-                @elseif ($task == 2)
-                <div class="col-sm-12 mt-4"
-                style="background-color: #F8C405; border: solid 5px; border-color:#343A40; border-radius: 40px 40px 40px 40px;">
-                    <h2 class="text-center" style="color: #343A40"><strong>AGENDAMENTOS PARA ATENDIMENTO TÉCNICO</strong></h2>
-                @else
-                <div class="col-sm-12 mt-4"
-                style="background-color: #f80505; border: solid 5px; border-color:#343A40; border-radius: 40px 40px 40px 40px;">
-                    <h2 class="text-center" style="color: #ffffff">Erro nos parâmetros de requisição, tente novamente mais tarde.</h2>
-                @endif
+            <div class="col-sm-10 mt-4">
+                <h1 class="text-center mb-3">Agendamentos do dia</h1>
             </div>
         </div>
         {{-- <p class="text-info">Filtrar por campo</p> <input class="form-control" id="myInput" type="text"
@@ -51,7 +39,7 @@ function tipoAtendimento($id)
         <div class="p-4">
             <div class=""></div>
             <a type="button" title="Visualizar" class="btn btn-warning ml-2" id="btnVisualizar" data-toggle="modal"
-                data-target="#listaTodos" data-toggle="tooltip" data-placement="top">
+            data-target="#listaTodos" data-toggle="tooltip" data-placement="top">
                 <i class="fa fa-list" aria-hidden="true"></i> Listar todos </a>
             <div class="container-fluid mt-4">
                 <table id="myTable" class="table table-atendimento table-bordered table-striped text-nowrap">

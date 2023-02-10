@@ -25,14 +25,14 @@ class AgendamentoController extends Controller
 
     }
 
-    public function index()
+    public function index($task)
     {
         $now = Carbon::now()->format('Y-m-d');
         $user = Auth::user();
         //print_r($user['id_lotacao']);
         //$agendados = Agendamento::all();
-        $agendados = Agendamento::where('data', $now/* date('Y-m-d' )*/)->where('unidade', $user['id_lotacao'])->get();
-        return view('agenda.lista_agendados', ['agendados' => $agendados]);
+        $agendados = Agendamento::where('data', $now/* date('Y-m-d' )*/)->where('unidade', $user['id_lotacao'])->where('tipo_atendimento', $task)->get();
+        return view('agenda.lista_agendados', ['agendados' => $agendados, 'task' => $task]);
     }
 
 

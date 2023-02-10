@@ -15,7 +15,6 @@
                     <a id="btn3" class="btn btn-lg bg-info" href="/novo_agendamento_cad">
                         <i class="fas fa-calendar-alt"></i>
                         <h5>AGENDAR ATENDIMENTO CADASTRO ÚNICO</h5>
-
                     </a>
 
                     <a id="btn3" class="btn btn-lg bg-info" href="/novo_agendamento_tec">
@@ -28,7 +27,7 @@
                     {{-- <a class="btn btn-lg bg-info menu mr-3" href="/novo_agendamento">
                     <i class="fas fa-folder-plus"></i></i> Cadastrar Novo Agendamento
                     </a> --}}
-                    <a id="btn3" class="btn btn-lg bg-secondary menu position-relative" href="/lista_agendados">
+                    <a id="btn3" class="btn btn-lg bg-secondary menu position-relative" href="/1/lista_agendados">
                         <i class="fa fa-list-ol"></i></i>
                         <h5>LISTAR ATENDIMENTOS CADASTRO ÚNICO</h5>
                         <span class="position-relative top-100 start-100 translate-middle badge rounded-pill bg-warning">
@@ -37,7 +36,7 @@
                         </span>
                     </a>
 
-                    <a id="btn4" class="btn btn-lg bg-secondary menu position-relative" href="/lista_agendados">
+                    <a id="btn4" class="btn btn-lg bg-secondary menu position-relative" href="/2/lista_agendados">
                         <i class="fa fa-list-ol"></i></i>
                         <h5>LISTAR ATENDIMENTOS TÉCNICOS</h5>
                         <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-warning">

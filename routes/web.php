@@ -54,7 +54,7 @@ Route::get('/novo_agendamento_tec', [App\Http\Controllers\AgendamentoTecControll
 Route::post('/salvar_atendimento_cad', [App\Http\Controllers\AgendamentoController::class, 'salvar_atendimento'])->name('agendamento-salvar_atendimento_cad');
 Route::post('/salvar_atendimento_tec', [App\Http\Controllers\AgendamentoTecController::class, 'salvar_atendimento'])->name('agendamento-salvar_atendimento_tec');
 
-Route::get('/lista_agendados', [App\Http\Controllers\AgendamentoController::class, 'index'])->name('agenda-lista_agendados');
+Route::get('/{task}/lista_agendados', [App\Http\Controllers\AgendamentoController::class, 'index'])->name('agenda-lista_agendados');
 
 Route::get('/{id}/resetarSenha', [\App\Http\Controllers\AdminController::class, 'resetarSenha'])->where('id', '[0-9]+')->name('resetarSenha');
 Route::put('/admin-update', [\App\Http\Controllers\AdminController::class, 'update'])->name('admin-update');
