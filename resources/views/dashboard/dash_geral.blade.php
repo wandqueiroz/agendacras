@@ -409,7 +409,7 @@ function calcula_porcentagem(float $valor_base, float $valor)
             </div>
 
         </div>
-        <div class="container-fluid pt-3">
+        <!-- <div class="container-fluid pt-3">
 
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-12">
@@ -482,7 +482,7 @@ function calcula_porcentagem(float $valor_base, float $valor)
 
             </div>
 
-        </div>
+        </div> -->
 
 
         <div style="padding-top: 20px;">

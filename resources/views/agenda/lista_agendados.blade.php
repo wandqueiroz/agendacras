@@ -546,14 +546,16 @@ function tipoAtendimento($id)
         $(document).on("click", ".btn--chama", function() {
             alert($('#horarioAt').val() + $('#tipoAt').val() + $('#prioridadeAt').val());
             let _token = $('meta[name="csrf-token"]').attr('content');
+           
             $.ajax({
                     type: "POST",
-                    url: "chamaNovo",
+                    url: "/chamaNovo/",
                     data: {
                         nome: $('#nomeAt').val(),
                         horario: $('#horarioAt').val(),
                         tipo: $('#tipoAt').val(),
                         prioridade: $('#prioridadeAt').val(),
+                        task: @php echo $task @endphp,
                         _token: _token
                     }
                 })

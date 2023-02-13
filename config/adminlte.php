@@ -282,11 +282,11 @@ return [
                     'icon' => 'far fa-chart-bar',
                     'url'  => '/1/dash_geral',
                 ],
-                [
+                /* [
                     'text' => 'At. Técnico',
                     'icon'    => 'far fa-chart-bar',
                     'url'  => '/2/dash_geral',
-                ],
+                ], */
             ],
         ],
         ['header' => 'account_settings'],

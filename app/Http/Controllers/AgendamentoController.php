@@ -168,9 +168,17 @@ class AgendamentoController extends Controller
 
     public function chamarNovo(Request $request)
     {
+        $task = $request->task;
+        if($task == 1){
+           
+            $tipo = "CADASTRO UNICO";   
+        }
+        else if($task == 2){
+            
+            $tipo = "ATENDIMENTO TECNICO";
+        }
+       
         $user = Auth::user();
-        $tipo = "CADASTRO UNICO";
-
         DB::insert('insert into chamadas_temp ( nome,horario,equipamento,perfil_atendimento,prioridade) values (?, ?,?,?, ?)', [strtoupper($request->nome),$request->horario,$user['id_lotacao'],$tipo,strtoupper($request->prioridade)]);
     }
 

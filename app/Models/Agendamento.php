@@ -20,5 +20,9 @@ class Agendamento extends Model
         'acao',
         'data',
         'horario',
+        'realizado',
+        'solucionado',
+        'usuario_atendimento',
+        'ip_atendimento'
     ];
 }

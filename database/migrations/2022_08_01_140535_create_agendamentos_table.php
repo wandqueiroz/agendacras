@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('agendamentos', function (Blueprint $table) {
             $table->id();
+            $table->string('id_beneficiario');
             $table->string('nome');
             $table->string('cpf');
             $table->string('celular');
@@ -22,8 +23,13 @@ return new class extends Migration
             $table->string('prioridade');
             $table->string('unidade');
             $table->string('tipo_atendimento');
+            $table->string('acao');
             $table->date('data')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('horario');
+            $table->string('realizado');
+            $table->string('solucionado');
+            $table->string('usuario_atendimento');
+            $table->string('ip_atendimento');
             $table->timestamps();
         });
     }
